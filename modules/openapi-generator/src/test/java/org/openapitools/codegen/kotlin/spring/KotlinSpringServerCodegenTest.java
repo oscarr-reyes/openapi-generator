@@ -447,12 +447,12 @@ public class KotlinSpringServerCodegenTest {
         codegen.additionalProperties().put(KotlinSpringServerCodegen.SKIP_DEFAULT_INTERFACE, true);
 
         new DefaultGenerator().opts(new ClientOptInput()
-                .openAPI(TestUtils.parseSpec("src/test/resources/3_0/petstore-with-fake-endpoints-models-for-testing-with-cookie.yaml"))
+                .openAPI(TestUtils.parseSpec("src/test/resources/3_1/kotlin-spring/petstore.yaml"))
                 .config(codegen))
             .generate();
 
         assertFileContains(
-            Paths.get(outputPath + "/src/main/kotlin/org/openapitools/api/FakeApi.kt"),
+            Paths.get(outputPath + "/src/main/kotlin/org/openapitools/api/UserApi.kt"),
             "@CookieValue"
         );
     }
@@ -467,12 +467,12 @@ public class KotlinSpringServerCodegenTest {
         codegen.setOutputDir(output.getAbsolutePath());
 
         new DefaultGenerator().opts(new ClientOptInput()
-                .openAPI(TestUtils.parseSpec("src/test/resources/3_0/petstore-with-fake-endpoints-models-for-testing-with-cookie.yaml"))
+                .openAPI(TestUtils.parseSpec("src/test/resources/3_1/kotlin-spring/petstore.yaml"))
                 .config(codegen))
             .generate();
 
         assertFileContains(
-            Paths.get(outputPath + "/src/main/kotlin/org/openapitools/api/FakeApiController.kt"),
+            Paths.get(outputPath + "/src/main/kotlin/org/openapitools/api/UserApiController.kt"),
             "@CookieValue"
         );
     }
